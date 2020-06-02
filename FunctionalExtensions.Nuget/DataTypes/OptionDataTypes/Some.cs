@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using FunctionalExtensions.Nuget.Exceptions;
 
-namespace FunctionalExtensions.Nuget.DataTypes.Option
+namespace FunctionalExtensions.Nuget.DataTypes.OptionDataTypes
 {
     public class Some<T> : Option<T>
     {
@@ -24,6 +24,7 @@ namespace FunctionalExtensions.Nuget.DataTypes.Option
         }
 
         public override Option<T> OrElse(Option<T> defaultOption) => this;
+        public override Option<T> OrElse(Func<Option<T>> defaultFunction) => this;
         public override T GetOrElse(T defaultValue) => Value;
 
         public override T2 Fold<T2>(T2 defaultValue, Func<T, T2> mapFunction) =>

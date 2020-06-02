@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FunctionalExtensions.Nuget.DataTypes.Option
+namespace FunctionalExtensions.Nuget.DataTypes.OptionDataTypes
 {
     public static class Option
     {
@@ -28,6 +28,7 @@ namespace FunctionalExtensions.Nuget.DataTypes.Option
         public bool NonEmpty => IsDefined;
 
         public abstract Option<T> OrElse(Option<T> defaultOption);
+        public abstract Option<T> OrElse(Func<Option<T>> defaultFunction);
         public abstract T GetOrElse(T defaultValue);
 
         public T Get() => Value;

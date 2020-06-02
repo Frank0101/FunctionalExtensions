@@ -63,6 +63,7 @@ var result = myOption switch
 |`bool IsEmpty`|True if empty|
 |`bool NonEmpty`|True if not empty|
 |`Option<T> OrElse(Option<T> defaultOption)`|Evaluate and return alternate optional value if empty|
+|`Option<T> OrElse(Func<Option<T>> defaultFunction)`|Evaluate and return alternate optional value if empty|
 |`T GetOrElse(T defaultValue)`|Evaluate and return alternate value if empty|
 |`T Get()`|Return value, throw exception if empty|
 |`T2 Fold<T2>(T2 defaultValue, Func<T, T2> mapFunction)`|Apply function on optional value, return default if empty|

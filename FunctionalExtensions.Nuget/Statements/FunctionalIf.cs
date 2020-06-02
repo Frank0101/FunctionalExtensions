@@ -1,6 +1,6 @@
 namespace FunctionalExtensions.Nuget.Statements
 {
-    public static class Functional
+    public static partial class Functional
     {
         /*
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -36,6 +36,6 @@ namespace FunctionalExtensions.Nuget.Statements
             public readonly Option<T> ToOption() =>
                 _maybeResultFunction.Map(f => f());
         }
-    */
+        */
     }
 }

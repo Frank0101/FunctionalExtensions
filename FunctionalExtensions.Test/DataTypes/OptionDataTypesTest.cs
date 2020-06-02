@@ -1,12 +1,12 @@
 using System;
 using FluentAssertions;
-using FunctionalExtensions.Nuget.DataTypes.Option;
+using FunctionalExtensions.Nuget.DataTypes.OptionDataTypes;
 using FunctionalExtensions.Nuget.Exceptions;
 using Xunit;
 
 namespace FunctionalExtensions.Test.DataTypes
 {
-    public class OptionTest
+    public class OptionDataTypesTest
     {
         [Fact]
         public void Some_GivenValue_ShouldReturnSome()
@@ -115,35 +115,53 @@ namespace FunctionalExtensions.Test.DataTypes
         }
 
         [Fact]
-        public void OrElse_GivenSome_ShouldReturnSelf()
+        public void OrElse_GivenSome_WhenDefaultIsConstant_ShouldReturnSelf()
         {
             var option = Option.Some("value");
-            var @default = Option.Some("default");
-            option.OrElse(@default).Should().Be(option);
+            var defaultOption = Option.Some("default");
+            option.OrElse(defaultOption).Should().Be(option);
         }
 
         [Fact]
-        public void OrElse_GivenNone_ShouldReturnDefault()
+        public void OrElse_GivenSome_WhenDefaultIsFunction_ShouldReturnSelf()
+        {
+            var option = Option.Some("value");
+            var defaultOption = Option.Some("default");
+            Option<string> DefaultFunction() => defaultOption;
+            option.OrElse(DefaultFunction).Should().Be(option);
+        }
+
+        [Fact]
+        public void OrElse_GivenNone_WhenDefaultIsConstant_ShouldReturnDefault()
         {
             var option = Option.None<string>();
-            var @default = Option.Some("default");
-            option.OrElse(@default).Should().Be(@default);
+            var defaultOption = Option.Some("default");
+            option.OrElse(defaultOption).Should().Be(defaultOption);
+        }
+
+        [Fact]
+        public void OrElse_GivenNone_WhenDefaultIsFunction_ShouldReturnDefault()
+        {
+            var option = Option.None<string>();
+            var defaultOption = Option.Some("default");
+            Option<string> DefaultFunction() => defaultOption;
+            option.OrElse(DefaultFunction).Should().Be(defaultOption);
         }
 
         [Fact]
         public void GetOrElse_GivenSome_ShouldReturnValue()
         {
             var option = Option.Some("value");
-            const string @default = "default";
-            option.GetOrElse(@default).Should().Be("value");
+            const string defaultValue = "default";
+            option.GetOrElse(defaultValue).Should().Be("value");
         }
 
         [Fact]
         public void GetOrElse_GivenNone_ShouldReturnDefault()
         {
             var option = Option.None<string>();
-            const string @default = "default";
-            option.GetOrElse(@default).Should().Be("default");
+            const string defaultValue = "default";
+            option.GetOrElse(defaultValue).Should().Be("default");
         }
 
         [Fact]
@@ -165,16 +183,16 @@ namespace FunctionalExtensions.Test.DataTypes
         public void Fold_GivenSome_ShouldReturnMappedValue()
         {
             var option = Option.Some("value");
-            const string @default = "[default]";
-            option.Fold(@default, value => $"[{value}]").Should().Be("[value]");
+            const string defaultValue = "[default]";
+            option.Fold(defaultValue, value => $"[{value}]").Should().Be("[value]");
         }
 
         [Fact]
         public void Fold_GivenNone_ShouldReturnDefault()
         {
             var option = Option.None<string>();
-            const string @default = "[default]";
-            option.Fold(@default, value => $"[{value}]").Should().Be("[default]");
+            const string defaultValue = "[default]";
+            option.Fold(defaultValue, value => $"[{value}]").Should().Be("[default]");
         }
 
         [Fact]
@@ -431,29 +449,5 @@ namespace FunctionalExtensions.Test.DataTypes
             result2.Should().BeOfType<None<string>>();
             result3.Should().BeOfType<None<string>>();
         }
-
-        // [Fact]
-        // public void Match_GivenSome_ShouldMatch()
-        // {
-        //     var option = Option.Some(1);
-        //     var result = option.Match switch
-        //     {
-        //         Option<int>.Some(var value) => value,
-        //         _ => 0
-        //     };
-        //     result.Should().Be(1);
-        // }
-        //
-        // [Fact]
-        // public void Match_GivenNone_ShouldMatch()
-        // {
-        //     var option = Option.None<int>();
-        //     var result = option.Match switch
-        //     {
-        //         Option<int>.Some(var value) => value,
-        //         _ => 0
-        //     };
-        //     result.Should().Be(0);
-        // }
     }
 }
