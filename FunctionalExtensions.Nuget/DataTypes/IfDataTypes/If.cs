@@ -7,7 +7,7 @@ namespace FunctionalExtensions.Nuget.DataTypes.IfDataTypes
     {
         private readonly Option<Func<T>> _maybeResultFunction;
 
-        public If(Option<Func<T>> maybeResultFunction)
+        internal If(Option<Func<T>> maybeResultFunction)
         {
             _maybeResultFunction = maybeResultFunction;
         }
