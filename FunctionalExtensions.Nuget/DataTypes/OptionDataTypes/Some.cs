@@ -26,8 +26,12 @@ namespace FunctionalExtensions.Nuget.DataTypes.OptionDataTypes
         public override Option<T> OrElse(Option<T> defaultOption) => this;
         public override Option<T> OrElse(Func<Option<T>> defaultFunction) => this;
         public override T GetOrElse(T defaultValue) => Value;
+        public override T GetOrElse(Func<T> defaultFunction) => Value;
 
         public override T2 Fold<T2>(T2 defaultValue, Func<T, T2> mapFunction) =>
+            mapFunction(Value);
+
+        public override T2 Fold<T2>(Func<T2> defaultFunction, Func<T, T2> mapFunction) =>
             mapFunction(Value);
 
         public override Option<T2> Map<T2>(Func<T, T2> mapFunction) =>

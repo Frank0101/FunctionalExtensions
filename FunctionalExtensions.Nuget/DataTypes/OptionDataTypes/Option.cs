@@ -30,10 +30,12 @@ namespace FunctionalExtensions.Nuget.DataTypes.OptionDataTypes
         public abstract Option<T> OrElse(Option<T> defaultOption);
         public abstract Option<T> OrElse(Func<Option<T>> defaultFunction);
         public abstract T GetOrElse(T defaultValue);
+        public abstract T GetOrElse(Func<T> defaultFunction);
 
         public T Get() => Value;
 
         public abstract T2 Fold<T2>(T2 defaultValue, Func<T, T2> mapFunction);
+        public abstract T2 Fold<T2>(Func<T2> defaultFunction, Func<T, T2> mapFunction);
         public abstract Option<T2> Map<T2>(Func<T, T2> mapFunction);
         public abstract Option<T2> FlatMap<T2>(Func<T, Option<T2>> mapFunction);
         public abstract void Foreach(Action<T> action);

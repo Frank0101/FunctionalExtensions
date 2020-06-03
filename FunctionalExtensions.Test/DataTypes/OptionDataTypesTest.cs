@@ -155,11 +155,27 @@ namespace FunctionalExtensions.Test.DataTypes
         }
 
         [Fact]
+        public void GetOrElse_GivenSome_WhenLazy_ShouldReturnValue()
+        {
+            var option = Option.Some("value");
+            const string defaultValue = "default";
+            option.GetOrElse(() => defaultValue).Should().Be("value");
+        }
+
+        [Fact]
         public void GetOrElse_GivenNone_ShouldReturnDefault()
         {
             var option = Option.None<string>();
             const string defaultValue = "default";
             option.GetOrElse(defaultValue).Should().Be("default");
+        }
+
+        [Fact]
+        public void GetOrElse_GivenNone_WhenLazy_ShouldReturnDefault()
+        {
+            var option = Option.None<string>();
+            const string defaultValue = "default";
+            option.GetOrElse(() => defaultValue).Should().Be("default");
         }
 
         [Fact]
@@ -186,11 +202,27 @@ namespace FunctionalExtensions.Test.DataTypes
         }
 
         [Fact]
+        public void Fold_GivenSome_WhenLazy_ShouldReturnMappedValue()
+        {
+            var option = Option.Some("value");
+            const string defaultValue = "[default]";
+            option.Fold(() => defaultValue, value => $"[{value}]").Should().Be("[value]");
+        }
+
+        [Fact]
         public void Fold_GivenNone_ShouldReturnDefault()
         {
             var option = Option.None<string>();
             const string defaultValue = "[default]";
             option.Fold(defaultValue, value => $"[{value}]").Should().Be("[default]");
+        }
+
+        [Fact]
+        public void Fold_GivenNone_WhenLazy_ShouldReturnDefault()
+        {
+            var option = Option.None<string>();
+            const string defaultValue = "[default]";
+            option.Fold(() => defaultValue, value => $"[{value}]").Should().Be("[default]");
         }
 
         [Fact]

@@ -3,6 +3,13 @@
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <Nullable>disable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Functional Extensions</Title>
+        <Authors>Frank0101</Authors>
+        <PackageProjectUrl>https://github.com/Frank0101/FunctionalExtensions</PackageProjectUrl>
+        <PackageVersion>0.0.1</PackageVersion>
+        <Description>Functional Extensions</Description>
+        <PackageLicenseUrl>https://licenses.nuget.org/MIT</PackageLicenseUrl>
     </PropertyGroup>
 
 </Project>

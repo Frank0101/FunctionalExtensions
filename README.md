@@ -64,10 +64,12 @@ var result = myOption switch
 |`bool IsEmpty`|True if empty|
 |`bool NonEmpty`|True if not empty|
 |`Option<T> OrElse(Option<T> defaultOption)`|Evaluate and return alternate optional value if empty|
-|`Option<T> OrElse(Func<Option<T>> defaultFunction)`|Evaluate and return alternate optional value if empty (Lazy)|
+|`Option<T> OrElse(Func<Option<T>> defaultFunction)`|Evaluate and return alternate optional value if empty (lazy)|
 |`T GetOrElse(T defaultValue)`|Evaluate and return alternate value if empty|
+|`T GetOrElse(Func<T> defaultFunction)`|Evaluate and return alternate value if empty (lazy)|
 |`T Get()`|Return value, throw exception if empty|
 |`T2 Fold<T2>(T2 defaultValue, Func<T, T2> mapFunction)`|Apply function on optional value, return default if empty|
+|`T2 Fold<T2>(Func<T2> defaultFunction, Func<T, T2> mapFunction)`|Apply function on optional value, return default if empty (lazy)|
 |`Option<T2> Map<T2>(Func<T, T2> mapFunction)`|Apply a function on the optional value|
 |`Option<T2> FlatMap<T2>(Func<T, Option<T2>> mapFunction)`|Same as `Map` but function must return an optional value|
 |`void Foreach(Action<T> action)`|Apply a procedure on option value|
