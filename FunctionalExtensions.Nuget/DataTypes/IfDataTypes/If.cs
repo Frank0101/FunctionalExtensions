@@ -3,6 +3,14 @@ using FunctionalExtensions.Nuget.DataTypes.OptionDataTypes;
 
 namespace FunctionalExtensions.Nuget.DataTypes.IfDataTypes
 {
+    public static class If
+    {
+        public static If<T> Eval<T>(Func<bool> predicate, Func<T> resultFunction) =>
+            new If<T>(predicate()
+                ? Option.Some(resultFunction)
+                : Option.None<Func<T>>());
+    }
+
     public class If<T>
     {
         private readonly Option<Func<T>> _maybeResultFunction;
@@ -13,10 +21,9 @@ namespace FunctionalExtensions.Nuget.DataTypes.IfDataTypes
         }
 
         public If<T> ElseIf(Func<bool> predicate, Func<T> resultFunction) =>
-            new If<T>(_maybeResultFunction.OrElse(() =>
-                predicate()
-                    ? Option.Some(resultFunction)
-                    : Option.None<Func<T>>()));
+            new If<T>(_maybeResultFunction.OrElse(() => predicate()
+                ? Option.Some(resultFunction)
+                : Option.None<Func<T>>()));
 
         public T Else(Func<T> resultFunction) =>
             _maybeResultFunction.GetOrElse(resultFunction)();

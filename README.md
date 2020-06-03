@@ -13,7 +13,8 @@ choice will always be for the first one.
 If what you see reminds you Scala it's not a coincidence. Scala is what I'm using as reference
 for it's hybrid nature that makes it a good example of what C# could aim to be.
 
-[Option](#option)
+- [Option](#option)
+- [Functional If](#functional-if)
 
 ## Option
 
@@ -34,13 +35,13 @@ var option = Option.None<string>();
 
 From value:
 ```c#
-var option = Option.From("value"); // Option is Some(value)
+var option = Option.From("value"); // Option is Some("value")
 var option = Option.From((string)null); // Option is None
 ```
 
 Implicit conversion:
 ```c#
-Option<string> option = "value"; // Option is Some(value)
+Option<string> option = "value"; // Option is Some("value")
 Option<string> option = (string)null; // Option is None
 ```
 
@@ -80,3 +81,39 @@ var result = myOption switch
 |`List<T> ToList()`|Unary list of optional value, otherwise the empty list|
 |`(Option<T1>, Option<T2>) Unzip<T1, T2>(this Option<(T1, T2)> option)`|Split an optional pair to two optional values|
 |`(Option<T1>, Option<T2>, Option<T3>) Unzip3<T1, T2, T3>(this Option<(T1, T2, T3)> option)`|Split an optional triple to three optional values|
+
+## Functional If
+
+### Usage
+
+Exhaustive matching:
+```c#
+var result = If
+    .Eval(
+        () => value == 1,
+        () => "value1")
+    .ElseIf(
+        () => value == 2,
+        () => "value2")
+    .ElseIf(
+        () => value == 3,
+        () => "value3")
+    .Else(
+        () => "default");
+```
+
+Partial matching:
+> Return Some(value) if a predicate was satisfied, None otherwise
+```c#
+var option = If
+    .Eval(
+        () => value == 1,
+        () => "value1")
+    .ElseIf(
+        () => value == 2,
+        () => "value2")
+    .ElseIf(
+        () => value == 3,
+        () => "value3")
+    .ToOption();
+```
