@@ -19,7 +19,7 @@ namespace FunctionalExtensions.Nuget.DataTypes.OptionDataTypes
             defaultOption;
 
         public override Option<T> OrElse(Func<Option<T>> defaultFunction) =>
-            defaultFunction();
+            OrElse(defaultFunction());
 
         public override T GetOrElse(T defaultValue) => defaultValue;
 

@@ -115,7 +115,7 @@ namespace FunctionalExtensions.Test.DataTypes
         }
 
         [Fact]
-        public void OrElse_GivenSome_WhenDefaultIsConstant_ShouldReturnSelf()
+        public void OrElse_GivenSome_ShouldReturnSelf()
         {
             var option = Option.Some("value");
             var defaultOption = Option.Some("default");
@@ -123,16 +123,15 @@ namespace FunctionalExtensions.Test.DataTypes
         }
 
         [Fact]
-        public void OrElse_GivenSome_WhenDefaultIsFunction_ShouldReturnSelf()
+        public void OrElse_GivenSome_WhenLazy_ShouldReturnSelf()
         {
             var option = Option.Some("value");
             var defaultOption = Option.Some("default");
-            Option<string> DefaultFunction() => defaultOption;
-            option.OrElse(DefaultFunction).Should().Be(option);
+            option.OrElse(() => defaultOption).Should().Be(option);
         }
 
         [Fact]
-        public void OrElse_GivenNone_WhenDefaultIsConstant_ShouldReturnDefault()
+        public void OrElse_GivenNone_ShouldReturnDefault()
         {
             var option = Option.None<string>();
             var defaultOption = Option.Some("default");
@@ -140,12 +139,11 @@ namespace FunctionalExtensions.Test.DataTypes
         }
 
         [Fact]
-        public void OrElse_GivenNone_WhenDefaultIsFunction_ShouldReturnDefault()
+        public void OrElse_GivenNone_WhenLazy_ShouldReturnDefault()
         {
             var option = Option.None<string>();
             var defaultOption = Option.Some("default");
-            Option<string> DefaultFunction() => defaultOption;
-            option.OrElse(DefaultFunction).Should().Be(defaultOption);
+            option.OrElse(() => defaultOption).Should().Be(defaultOption);
         }
 
         [Fact]
