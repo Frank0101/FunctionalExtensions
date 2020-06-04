@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FunctionalExtensions.Nuget.DataTypes.OptionDataTypes
+namespace FunctionalExtensions.DataTypes.OptionDataTypes
 {
     public static class Option
     {

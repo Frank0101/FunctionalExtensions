@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using FunctionalExtensions.Nuget.Exceptions;
+using FunctionalExtensions.Exceptions;
 
-namespace FunctionalExtensions.Nuget.DataTypes.OptionDataTypes
+namespace FunctionalExtensions.DataTypes.OptionDataTypes
 {
     public class Some<T> : Option<T>
     {

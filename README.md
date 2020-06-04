@@ -8,7 +8,7 @@ twisting too much the language and accepting the imperative nature of C#, as wel
 inherent limitations.
 
 Therefore, between a clear, intuitive C# syntax and a perfect functional implementation, the
-choice will always be for the first one.
+choice will always fall on the first one.
 
 If what you see reminds you Scala it's not a coincidence. Scala is what I'm using as reference
 for it's hybrid nature that makes it a good example of what C# could aim to be.

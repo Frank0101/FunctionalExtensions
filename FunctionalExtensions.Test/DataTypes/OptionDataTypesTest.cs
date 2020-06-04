@@ -1,7 +1,7 @@
 using System;
 using FluentAssertions;
-using FunctionalExtensions.Nuget.DataTypes.OptionDataTypes;
-using FunctionalExtensions.Nuget.Exceptions;
+using FunctionalExtensions.DataTypes.OptionDataTypes;
+using FunctionalExtensions.Exceptions;
 using Xunit;
 
 namespace FunctionalExtensions.Test.DataTypes

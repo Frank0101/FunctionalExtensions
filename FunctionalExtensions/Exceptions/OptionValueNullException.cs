@@ -1,6 +1,6 @@
 using System;
 
-namespace FunctionalExtensions.Nuget.Exceptions
+namespace FunctionalExtensions.Exceptions
 {
     public class OptionValueNullException : Exception
     {

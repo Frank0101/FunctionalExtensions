@@ -1,6 +1,6 @@
 using FluentAssertions;
-using FunctionalExtensions.Nuget.DataTypes.IfDataTypes;
-using FunctionalExtensions.Nuget.DataTypes.OptionDataTypes;
+using FunctionalExtensions.DataTypes.IfDataTypes;
+using FunctionalExtensions.DataTypes.OptionDataTypes;
 using Xunit;
 
 namespace FunctionalExtensions.Test.DataTypes

@@ -1,4 +1,4 @@
-namespace FunctionalExtensions.Nuget.DataTypes.OptionDataTypes
+namespace FunctionalExtensions.DataTypes.OptionDataTypes
 {
     public static class OptionExtensions
     {

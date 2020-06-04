@@ -1,7 +1,7 @@
 using System;
-using FunctionalExtensions.Nuget.DataTypes.OptionDataTypes;
+using FunctionalExtensions.DataTypes.OptionDataTypes;
 
-namespace FunctionalExtensions.Nuget.DataTypes.IfDataTypes
+namespace FunctionalExtensions.DataTypes.IfDataTypes
 {
     public static class If
     {
