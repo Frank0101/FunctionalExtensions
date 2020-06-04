@@ -19,7 +19,7 @@ namespace FunctionalExtensions.Test.DataTypes
         public void Some_GivenNull_ShouldThrowException()
         {
             var check = new Action(() => Option.Some((string)null));
-            check.Should().Throw<OptionValueNullException>();
+            check.Should().Throw<OptionValueIsNullException>();
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace FunctionalExtensions.Test.DataTypes
         {
             var option = Option.None<string>();
             var check = new Func<string>(() => option.Value);
-            check.Should().Throw<OptionValueNullException>();
+            check.Should().Throw<OptionIsNoneException>();
         }
 
         [Fact]
@@ -190,7 +190,7 @@ namespace FunctionalExtensions.Test.DataTypes
         {
             var option = Option.None<string>();
             var check = new Action(() => option.Get());
-            check.Should().Throw<OptionValueNullException>();
+            check.Should().Throw<OptionIsNoneException>();
         }
 
         [Fact]

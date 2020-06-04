@@ -14,7 +14,7 @@ namespace FunctionalExtensions.DataTypes.OptionDataTypes
             Value = value switch
             {
                 { } someValue => someValue,
-                _ => throw new OptionValueNullException()
+                _ => throw new OptionValueIsNullException()
             };
         }
 

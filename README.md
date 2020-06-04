@@ -14,6 +14,7 @@ If what you see reminds you Scala it's not a coincidence. Scala is what I'm usin
 for it's hybrid nature that makes it a good example of what C# could aim to be.
 
 - [Option](#option)
+- [Try and Functional Try](#try-and-functional-try)
 - [Functional If](#functional-if)
 
 ## Option
@@ -83,6 +84,10 @@ var result = myOption switch
 |`List<T> ToList()`|Unary list of optional value, otherwise the empty list|
 |`(Option<T1>, Option<T2>) Unzip<T1, T2>(this Option<(T1, T2)> option)`|Split an optional pair to two optional values|
 |`(Option<T1>, Option<T2>, Option<T3>) Unzip3<T1, T2, T3>(this Option<(T1, T2, T3)> option)`|Split an optional triple to three optional values|
+
+## Try and Functional Try
+
+[Scala Reference](https://www.scala-lang.org/api/current/scala/util/Try.html)
 
 ## Functional If
 

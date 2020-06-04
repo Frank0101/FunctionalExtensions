@@ -2,7 +2,7 @@ using System;
 
 namespace FunctionalExtensions.Exceptions
 {
-    public class OptionValueNullException : Exception
+    public class OptionIsNoneException : Exception
     {
     }
 }

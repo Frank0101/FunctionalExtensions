@@ -7,7 +7,7 @@ namespace FunctionalExtensions.DataTypes.OptionDataTypes
     public class None<T> : Option<T>
     {
         public override T Value =>
-            throw new OptionValueNullException();
+            throw new OptionIsNoneException();
 
         public override bool IsDefined => false;
 
