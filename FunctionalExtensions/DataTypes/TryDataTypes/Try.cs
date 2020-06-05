@@ -21,6 +21,9 @@ namespace FunctionalExtensions.DataTypes.TryDataTypes
 
         public static Try<T> Failure<T>(Exception error) =>
             new Failure<T>(error);
+
+        public static Try<T> From<T>(T value) => value;
+        public static Try<T> From<T>(Exception error) => error;
     }
 
     public abstract class Try<T>

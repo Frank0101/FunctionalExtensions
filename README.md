@@ -1,5 +1,7 @@
 # FunctionalExtensions
 
+[![Nuget](https://img.shields.io/nuget/v/FunctionalExtensions.Nuget)](https://www.nuget.org/packages/FunctionalExtensions.Nuget)
+
 This library extends C# to provide a set of functional programming features.
 
 Unlike other libraries attempting the same, here the idea is to build a simple, light-weight
@@ -88,6 +90,58 @@ var result = myOption switch
 ## Try and Functional Try
 
 [Scala Reference](https://www.scala-lang.org/api/current/scala/util/Try.html)
+
+The `Try` type represents a computation that may either result in an exception, or return a successfully
+computed value. It's similar to, but semantically different from the `Either` type.
+
+Instances of `Try<T>`, are either an instance of `Success<T>` or `Failure<T>`.
+
+> For example, `Try` can be used to evaluate non-pure functions, without the need to do explicit
+> exception-handling in all of the places that an exception might occur.
+
+### Creating a Try
+
+Functional Try:
+```c#
+var tryObj = Try.Eval(() => "value".ToUpper()); // Try is Success("VALUE")
+var tryObj = Try.Eval(() => ((string)null).ToUpper()); // Try is Failure(error)
+```
+
+Explicit:
+```c#
+var tryObj = Try.Success("value"); // Try is Success("value")
+var tryObj = Try.Failure<string>(new Exception());  // Try is Failure(error)
+```
+
+From value:
+```c#
+var tryObj = Try.From("value"); // Try is Success("value")
+var tryObj = Try.From<string>(new Exception());  // Try is Failure(error)
+```
+
+Implicit conversion:
+```c#
+Try<string> tryObj = "value"; // Try is Success("value")
+Try<string> tryObj = new Exception();  // Try is Failure(error)
+```
+
+### Pattern Matching and Deconstruction
+
+```c#
+var result = tryObj switch
+{
+    Success<string>(var value) => value,
+    Failure<string>(var error) => error.Message
+};
+```
+
+### Try Members
+
+|Member|Description|
+|---|---|
+|`T Value`|Return value, throw exception if failure|
+|`Exception Error`|Return error, throw exception if success|
+|`bool IsSuccess`|True if success|
 
 ## Functional If
 
