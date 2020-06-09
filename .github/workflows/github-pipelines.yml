@@ -1,0 +1,26 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Select .Net Core SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.102
+      - name: Restore Solution
+        run: dotnet restore
+      - name: Build Solution
+        run: dotnet build --configuration Release --no-restore
+      - name: Test Solution
+        run: dotnet test --no-restore --verbosity normal
+      - name: Pack NuGet Project
+        run: dotnet pack FunctionalExtensions/FunctionalExtensions.csproj --output nuget-packages --configuration Release
+      - name: Push NuGet Project
+        run: dotnet nuget push nuget-packages/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
