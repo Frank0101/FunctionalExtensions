@@ -11,13 +11,13 @@ namespace FunctionalExtensions.Extensions.ThreadingExtensions
             return mapFunction(result);
         }
 
-        public static async ValueTask<T2> FlatMap<T1, T2>(this ValueTask<T1> task, Func<T1, Task<T2>> mapFunction)
+        public static async ValueTask<T2> FlatMap<T1, T2>(this ValueTask<T1> task, Func<T1, ValueTask<T2>> mapFunction)
         {
             var result = await task;
             return await mapFunction(result);
         }
 
-        public static async ValueTask Foreach<T>(this ValueTask<T> task, Func<T, Task> mapFunction)
+        public static async ValueTask Foreach<T>(this ValueTask<T> task, Func<T, ValueTask> mapFunction)
         {
             var result = await task;
             await mapFunction(result);
