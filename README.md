@@ -1,5 +1,6 @@
 # FunctionalExtensions
 
+![.NET Core](https://github.com/Frank0101/FunctionalExtensions/workflows/.NET%20Core/badge.svg?branch=master)
 [![Nuget](https://img.shields.io/nuget/v/FunctionalExtensions.Nuget)](https://www.nuget.org/packages/FunctionalExtensions.Nuget)
 
 This library extends C# to provide a set of functional programming features.
