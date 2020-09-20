@@ -13,7 +13,7 @@ then
     COMMA_SEPARATED_FILES=$(echo $SPACE_SEPARATED_FILES | sed -e 's/ /,/g')
     
     # Format all selected files
-    dotnet-format --files $COMMA_SEPARATED_FILES
+    dotnet-format --include $COMMA_SEPARATED_FILES
     
     # Add back the modified files to staging
     git add $SPACE_SEPARATED_FILES
