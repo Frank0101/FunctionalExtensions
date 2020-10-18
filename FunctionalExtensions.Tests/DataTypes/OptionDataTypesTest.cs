@@ -4,7 +4,7 @@ using FunctionalExtensions.DataTypes.OptionDataTypes;
 using FunctionalExtensions.Exceptions;
 using Xunit;
 
-namespace FunctionalExtensions.Test.DataTypes
+namespace FunctionalExtensions.Tests.DataTypes
 {
     public class OptionDataTypesTest
     {

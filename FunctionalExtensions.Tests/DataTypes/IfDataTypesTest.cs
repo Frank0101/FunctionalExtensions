@@ -3,7 +3,7 @@ using FunctionalExtensions.DataTypes.IfDataTypes;
 using FunctionalExtensions.DataTypes.OptionDataTypes;
 using Xunit;
 
-namespace FunctionalExtensions.Test.DataTypes
+namespace FunctionalExtensions.Tests.DataTypes
 {
     public class IfDataTypesTest
     {

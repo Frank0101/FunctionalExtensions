@@ -4,7 +4,7 @@ using FluentAssertions;
 using FunctionalExtensions.Extensions.ThreadingExtensions;
 using Xunit;
 
-namespace FunctionalExtensions.Test.Extensions.ThreadingExtensions
+namespace FunctionalExtensions.Tests.Extensions.ThreadingExtensions
 {
     public class TupleTaskTest
     {

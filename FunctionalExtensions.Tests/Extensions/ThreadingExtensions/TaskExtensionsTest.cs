@@ -4,9 +4,9 @@ using FluentAssertions;
 using FunctionalExtensions.Extensions.ThreadingExtensions;
 using Xunit;
 
-namespace FunctionalExtensions.Test.Extensions.ThreadingExtensions
+namespace FunctionalExtensions.Tests.Extensions.ThreadingExtensions
 {
-    public class ValueTaskExtensionsTest
+    public class TaskExtensionsTest
     {
         [Fact]
         public async Task Map_GivenSyncFunction_ShouldMap()
@@ -44,7 +44,7 @@ namespace FunctionalExtensions.Test.Extensions.ThreadingExtensions
             check.Should().Be("value");
         }
 
-        private static async ValueTask<string> TestFunction(string value)
+        private static async Task<string> TestFunction(string value)
         {
             await Task.Delay(TimeSpan.FromSeconds(0.5));
             return value;

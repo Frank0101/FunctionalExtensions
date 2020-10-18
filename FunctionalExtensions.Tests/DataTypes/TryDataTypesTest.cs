@@ -4,7 +4,7 @@ using FunctionalExtensions.DataTypes.TryDataTypes;
 using FunctionalExtensions.Exceptions;
 using Xunit;
 
-namespace FunctionalExtensions.Test.DataTypes
+namespace FunctionalExtensions.Tests.DataTypes
 {
     public class TryDataTypesTest
     {
