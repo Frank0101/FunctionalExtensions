@@ -5,7 +5,7 @@
         <Nullable>disable</Nullable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>FunctionalExtensions.Nuget</PackageId>
-        <PackageVersion>0.0.8</PackageVersion>
+        <PackageVersion>0.0.9</PackageVersion>
         <Title>Functional Extensions</Title>
         <Authors>Frank0101</Authors>
         <Description>Functional Extensions</Description>
