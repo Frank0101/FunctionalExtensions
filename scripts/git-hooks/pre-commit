@@ -6,17 +6,15 @@ export PATH="/usr/local/share/dotnet:$PATH"
 set -e
 
 # Select files to format
-SPACE_SEPARATED_FILES=$(git diff --cached --name-only --diff-filter=d)
+FILES=$(git diff --cached --name-only --diff-filter=d)
 
-if [ "$SPACE_SEPARATED_FILES" != "" ]
-then
-    COMMA_SEPARATED_FILES=$(echo $SPACE_SEPARATED_FILES | sed -e 's/ /,/g')
-    
+if [ "$FILES" != "" ]
+then    
     # Format all selected files
-    dotnet-format --include $COMMA_SEPARATED_FILES
+    echo $FILES | xargs dotnet format --include
     
     # Add back the modified files to staging
-    git add $SPACE_SEPARATED_FILES
+    echo $FILES | xargs git add
 fi
 
 exit 0

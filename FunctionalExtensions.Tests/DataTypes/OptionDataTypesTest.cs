@@ -18,7 +18,7 @@ namespace FunctionalExtensions.Tests.DataTypes
         [Fact]
         public void Some_GivenNull_ShouldThrowException()
         {
-            var check = new Action(() => Option.Some((string)null));
+            var check = new Action(() => Option.Some((string)null!));
             check.Should().Throw<OptionValueIsNullException>();
         }
 
@@ -39,7 +39,7 @@ namespace FunctionalExtensions.Tests.DataTypes
         [Fact]
         public void From_GivenNull_ShouldReturnNone()
         {
-            var option = Option.From((string)null);
+            var option = Option.From((string)null!);
             option.Should().BeOfType<None<string>>();
         }
 
@@ -53,7 +53,7 @@ namespace FunctionalExtensions.Tests.DataTypes
         [Fact]
         public void ImplicitConversion_GivenNull_ShouldReturnNone()
         {
-            Option<string> option = (string)null;
+            Option<string> option = (string)null!;
             option.Should().BeOfType<None<string>>();
         }
 
@@ -285,7 +285,7 @@ namespace FunctionalExtensions.Tests.DataTypes
         public void Collect_GivenSome_WhenMappingReturnsNull_ShouldReturnNone()
         {
             var option = Option.Some("value");
-            option.Collect(value => (string)null).Should().BeOfType<None<string>>();
+            option.Collect(_ => (string)null!).Should().BeOfType<None<string>>();
         }
 
         [Fact]
@@ -293,95 +293,95 @@ namespace FunctionalExtensions.Tests.DataTypes
         {
             var option = Option.None<string>();
             option.Collect(value => $"[{value}]").Should().BeOfType<None<string>>();
-            option.Collect(value => (string)null).Should().BeOfType<None<string>>();
+            option.Collect(_ => (string)null!).Should().BeOfType<None<string>>();
         }
 
         [Fact]
         public void Filter_GivenSome_WhenPredicateReturnsTrue_ShouldReturnSelf()
         {
             var option = Option.Some("value");
-            option.Filter(value => true).Should().Be(option);
+            option.Filter(_ => true).Should().Be(option);
         }
 
         [Fact]
         public void Filter_GivenSome_WhenPredicateReturnsFalse_ShouldReturnNone()
         {
             var option = Option.Some("value");
-            option.Filter(value => false).Should().BeOfType<None<string>>();
+            option.Filter(_ => false).Should().BeOfType<None<string>>();
         }
 
         [Fact]
         public void Filter_GivenNone_ShouldReturnSelf()
         {
             var option = Option.None<string>();
-            option.Filter(value => true).Should().Be(option);
-            option.Filter(value => false).Should().Be(option);
+            option.Filter(_ => true).Should().Be(option);
+            option.Filter(_ => false).Should().Be(option);
         }
 
         [Fact]
         public void FilterNot_GivenSome_WhenPredicateReturnsTrue_ShouldReturnNone()
         {
             var option = Option.Some("value");
-            option.FilterNot(value => true).Should().BeOfType<None<string>>();
+            option.FilterNot(_ => true).Should().BeOfType<None<string>>();
         }
 
         [Fact]
         public void FilterNot_GivenSome_WhenPredicateReturnsFalse_ShouldReturnSelf()
         {
             var option = Option.Some("value");
-            option.FilterNot(value => false).Should().Be(option);
+            option.FilterNot(_ => false).Should().Be(option);
         }
 
         [Fact]
         public void FilterNot_GivenNone_ShouldReturnSelf()
         {
             var option = Option.None<string>();
-            option.FilterNot(value => true).Should().Be(option);
-            option.FilterNot(value => false).Should().Be(option);
+            option.FilterNot(_ => true).Should().Be(option);
+            option.FilterNot(_ => false).Should().Be(option);
         }
 
         [Fact]
         public void Exists_GivenSome_WhenPredicateReturnsTrue_ShouldReturnTrue()
         {
             var option = Option.Some("value");
-            option.Exists(value => true).Should().BeTrue();
+            option.Exists(_ => true).Should().BeTrue();
         }
 
         [Fact]
         public void Exists_GivenSome_WhenPredicateReturnsFalse_ShouldReturnFalse()
         {
             var option = Option.Some("value");
-            option.Exists(value => false).Should().BeFalse();
+            option.Exists(_ => false).Should().BeFalse();
         }
 
         [Fact]
         public void Exists_GivenNone_ShouldReturnFalse()
         {
             var option = Option.None<string>();
-            option.Exists(value => true).Should().BeFalse();
-            option.Exists(value => false).Should().BeFalse();
+            option.Exists(_ => true).Should().BeFalse();
+            option.Exists(_ => false).Should().BeFalse();
         }
 
         [Fact]
         public void ForAll_GivenSome_WhenPredicateReturnsTrue_ShouldReturnTrue()
         {
             var option = Option.Some("value");
-            option.ForAll(value => true).Should().BeTrue();
+            option.ForAll(_ => true).Should().BeTrue();
         }
 
         [Fact]
         public void ForAll_GivenSome_WhenPredicateReturnsFalse_ShouldReturnFalse()
         {
             var option = Option.Some("value");
-            option.ForAll(value => false).Should().BeFalse();
+            option.ForAll(_ => false).Should().BeFalse();
         }
 
         [Fact]
         public void ForAll_GivenNone_ShouldReturnTrue()
         {
             var option = Option.None<string>();
-            option.ForAll(value => true).Should().BeTrue();
-            option.ForAll(value => false).Should().BeTrue();
+            option.ForAll(_ => true).Should().BeTrue();
+            option.ForAll(_ => false).Should().BeTrue();
         }
 
         [Fact]
@@ -445,7 +445,7 @@ namespace FunctionalExtensions.Tests.DataTypes
         [Fact]
         public void Unzip_GivenSome_ShouldReturnOptions()
         {
-            var option = Option.Some(("value", (string)null));
+            var option = Option.Some(("value", (string)null!));
             var (result1, result2) = option.Unzip();
             result1.Should().BeOfType<Some<string>>().Which.Value.Should().Be("value");
             result2.Should().BeOfType<None<string>>();
@@ -463,7 +463,7 @@ namespace FunctionalExtensions.Tests.DataTypes
         [Fact]
         public void Unzip3_GivenSome_ShouldReturnOptions()
         {
-            var option = Option.Some(("value1", "value2", (string)null));
+            var option = Option.Some(("value1", "value2", (string)null!));
             var (result1, result2, result3) = option.Unzip3();
             result1.Should().BeOfType<Some<string>>().Which.Value.Should().Be("value1");
             result2.Should().BeOfType<Some<string>>().Which.Value.Should().Be("value2");

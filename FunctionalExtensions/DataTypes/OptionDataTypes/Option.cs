@@ -17,7 +17,7 @@ namespace FunctionalExtensions.DataTypes.OptionDataTypes
         public static implicit operator Option<T>(T value) =>
             value switch
             {
-                { } someValue => Option.Some(someValue),
+                not null => Option.Some(value),
                 _ => Option.None<T>()
             };
 

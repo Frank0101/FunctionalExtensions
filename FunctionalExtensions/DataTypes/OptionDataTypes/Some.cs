@@ -13,7 +13,7 @@ namespace FunctionalExtensions.DataTypes.OptionDataTypes
         {
             Value = value switch
             {
-                { } someValue => someValue,
+                not null => value,
                 _ => throw new OptionValueIsNullException()
             };
         }
@@ -62,7 +62,7 @@ namespace FunctionalExtensions.DataTypes.OptionDataTypes
             Exists(predicate);
 
         public override bool Contains(T value) =>
-            Value.Equals(value);
+            Value!.Equals(value);
 
         public override Option<(T, T2)> Zip<T2>(Option<T2> otherOption) =>
             otherOption.Collect(otherValue => (Value, otherValue));

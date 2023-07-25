@@ -1,5 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionalExtensions", "FunctionalExtensions\FunctionalExtensions.csproj", "{188FF14C-E88C-4324-83C5-831607733792}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionalExtensions.Tests", "FunctionalExtensions.Tests\FunctionalExtensions.Tests.csproj", "{F7B26E7D-C895-416E-8D31-63CEDB96DDE4}"

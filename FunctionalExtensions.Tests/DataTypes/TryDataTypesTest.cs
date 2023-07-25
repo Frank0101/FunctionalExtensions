@@ -18,8 +18,7 @@ namespace FunctionalExtensions.Tests.DataTypes
         [Fact]
         public void Eval_GivenException_ShouldReturnFailure()
         {
-            // ReSharper disable once PossibleNullReferenceException
-            var tryObj = Try.Eval(() => ((string)null).ToUpper());
+            var tryObj = Try.Eval(() => ((string)null!).ToUpper());
             tryObj.Should().BeOfType<Failure<string>>()
                 .Which.Error.Should().BeOfType<NullReferenceException>();
         }
