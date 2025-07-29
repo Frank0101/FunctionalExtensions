@@ -14,7 +14,7 @@ jobs:
       - name: 'Select .Net Core SDK'
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '7.0.306'
+          dotnet-version: '9.0.303'
       - name: 'Restore Solution'
         run: dotnet restore
       - name: 'Build Solution'
